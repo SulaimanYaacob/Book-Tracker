@@ -4,6 +4,9 @@ import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BookSearch from "./pages/BookSearch.tsx";
 import Home from "./pages/Home.tsx";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap/scss/bootstrap.scss";
 
 //TODO Add other pages. add path & element props
 
