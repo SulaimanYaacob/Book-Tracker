@@ -9,13 +9,11 @@ function BookSearch() {
   return (
     <div>
       <input
-        type="button"
+        type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button className="" onClick={fetchBooks}>
-        Search
-      </button>
+      <button onClick={fetchBooks}>Search</button>
       {books?.map(({ id, volumeInfo }: BookInfo) => (
         <div key={id}>{volumeInfo.title}</div>
       ))}
