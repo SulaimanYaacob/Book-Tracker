@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
-import useSearchBooks from "../hooks/useSearchBooks";
+import { useState } from "react";
 import { BookInfo } from "../types";
+import useSearchBooks from "../hooks/useSearchBooks";
 
 function BookSearch() {
   const [searchTerm, setSearchTerm] = useState<string>("");
