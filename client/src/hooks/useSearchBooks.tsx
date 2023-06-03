@@ -5,7 +5,6 @@ import { BookInfo } from "../types";
 type Props = {
   searchTerm: string;
 };
-
 const useSearchBooks = ({ searchTerm }: Props) => {
   const [books, setBooks] = useState<BookInfo[]>();
 
