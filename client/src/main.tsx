@@ -5,8 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BookSearch from "./pages/BookSearch.tsx";
 import Home from "./pages/Home.tsx";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
-import "bootstrap/scss/bootstrap.scss";
+import BookDetails from "./pages/BookDetails.tsx";
 
 //TODO Add other pages. add path & element props
 
@@ -19,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Route path="/" />
         <Route path="/" />
         <Route path="*" element={<h1>Error 404</h1>} />
+        <Route path="/book/:id" element={<BookDetails />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
