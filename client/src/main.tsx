@@ -17,8 +17,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Route path="/search" element={<BookSearch />} />
         <Route path="/" />
         <Route path="/" />
-        <Route path="*" element={<h1>Error 404</h1>} />
         <Route path="/book/:id" element={<BookDetails />} />
+        <Route path="*" element={<h1>Error 404</h1>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
