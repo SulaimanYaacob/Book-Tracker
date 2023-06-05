@@ -1,7 +1,7 @@
 import { Params, useParams } from "react-router-dom";
-import useGetBookDetails from "../hooks/useGetBookDetails";
+import { useGetBookDetails } from "../hooks/useGetBookDetails";
 
-const BookDetails = () => {
+function BookDetails() {
   const { id }: Readonly<Params<string>> = useParams();
   const { book, loading } = useGetBookDetails({ id });
 
@@ -28,6 +28,6 @@ const BookDetails = () => {
       </div>
     </div>
   );
-};
+}
 
 export default BookDetails;

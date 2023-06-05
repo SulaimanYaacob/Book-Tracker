@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { BookInfo } from "../types";
-import useSearchBooks from "../hooks/useSearchBooks";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "../utils/useQuery";
+import { useSearchBooks } from "../hooks/useSearchBooks";
 import Loading from "../components/Loading";
 
 function BookSearch() {
+  const navigate = useNavigate();
   const term = useQuery().get("term") || "";
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { loading, books } = useSearchBooks({ searchTerm: term });
-  const navigate = useNavigate();
 
   const handleOnSearch = () => {
     navigate(`/search?term=${searchTerm}`);

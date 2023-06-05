@@ -6,7 +6,8 @@ import { useEffect } from "react";
 type Props = {
   searchTerm: string;
 };
-const useSearchBooks = ({ searchTerm }: Props) => {
+
+export const useSearchBooks = ({ searchTerm }: Props) => {
   const [books, setBooks] = useState<BookInfo[]>();
   const [loading, setLoading] = useState(false);
 
@@ -38,5 +39,3 @@ const useSearchBooks = ({ searchTerm }: Props) => {
     loading,
   };
 };
-
-export default useSearchBooks;
