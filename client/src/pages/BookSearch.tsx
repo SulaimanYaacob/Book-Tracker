@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BookInfo } from "../types";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "../utils/useQuery";
-import { useSearchBooks } from "../hooks/useSearchBooks";
+import useSearchBooks from "../hooks/useSearchBooks";
 import Loading from "../components/Loading";
 
 function BookSearch() {

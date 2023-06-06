@@ -6,7 +6,7 @@ type Props = {
   id?: string;
 };
 
-export const useGetBookDetails = ({ id }: Props) => {
+const useGetBookDetails = ({ id }: Props) => {
   const [book, setBook] = useState<BookInfo>();
   const [loading, setLoading] = useState(false);
 
@@ -27,3 +27,5 @@ export const useGetBookDetails = ({ id }: Props) => {
     loading,
   };
 };
+
+export default useGetBookDetails;

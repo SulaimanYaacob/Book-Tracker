@@ -1,5 +1,5 @@
 import { Params, useParams } from "react-router-dom";
-import { useGetBookDetails } from "../hooks/useGetBookDetails";
+import useGetBookDetails from "../hooks/useGetBookDetails";
 import Loading from "../components/Loading";
 
 function BookDetails() {

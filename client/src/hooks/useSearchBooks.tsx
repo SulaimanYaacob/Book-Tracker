@@ -7,7 +7,7 @@ type Props = {
   searchTerm: string;
 };
 
-export const useSearchBooks = ({ searchTerm }: Props) => {
+const useSearchBooks = ({ searchTerm }: Props) => {
   const [books, setBooks] = useState<BookInfo[]>();
   const [loading, setLoading] = useState(false);
 
@@ -39,3 +39,5 @@ export const useSearchBooks = ({ searchTerm }: Props) => {
     loading,
   };
 };
+
+export default useSearchBooks;
