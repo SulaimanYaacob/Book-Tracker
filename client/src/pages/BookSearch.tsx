@@ -31,9 +31,11 @@ function BookSearch() {
           Search
         </button>
       </div>
-      <p className="text-muted text-center">
-        Searched for <mark>'{term}'</mark>
-      </p>
+      {term && (
+        <p className="text-muted text-center">
+          Searched for <mark>'{term}'</mark>
+        </p>
+      )}
       <Loading loading={loading}>
         <div className="row row-cols-1 row-cols-md-3 row-cols-xl-4 g-3 mx-3">
           {books?.map(({ id, volumeInfo }: BookInfo) => (
