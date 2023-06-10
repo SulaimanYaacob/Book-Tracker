@@ -13,6 +13,7 @@ import Home from "./pages/Home.tsx";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import BookDetails from "./pages/BookDetails.tsx";
 import Clerk from "./pages/Clerk.tsx";
+import BookProgress from "./pages/BookProgress.tsx";
 
 //TODO Add other pages. add path & element props
 
@@ -25,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <Route index element={<Home />} />
             <Route path="/search" element={<BookSearch />} />
             <Route path="/clerk" element={<Clerk />} />
-            <Route path="/" />
+            <Route path="/progress" element={<BookProgress />} />
             <Route path="*" element={<h1>Error 404</h1>} />
             <Route path="/book/:id" element={<BookDetails />} />
           </Routes>
