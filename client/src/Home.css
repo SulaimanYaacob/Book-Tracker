@@ -1,14 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair Display:wght@100;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;500&display=swap');
 
-.fluid-container {
-    position: fixed;
-    width: 58%;
-    height: 100%;
 
+.fluid-container {
+    overflow-y: auto;
+}
+
+#background {
+    position: absolute;
+    width: 54%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    
     background: #F1EEE3;
 }
 
+#left-side {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 46%;
+    height: 100%;
+}
 #vertical-line {
     position: absolute;
     width: 869px;
@@ -66,13 +80,30 @@
     color: #6D6D6D;
 }
 
+#book-list {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+}
 
+#book-list>#title {
+    position: absolute;
+    width: 106px;
+    height: 32px;
+    left: 141px;
+    padding-top: 26rem;
+
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+}
 /*Finish Today: 12 June 23*/
 #book {
     display: flex;
     flex-direction: row;
     margin-left: 37rem;
-    margin-top: 1rem;
 }
 
 #book-image {
@@ -81,14 +112,14 @@
     filter: drop-shadow(-16px 18px 40px rgba(0, 0, 0, 0.25));
 }
 
-#book-details {
+#book-description {
     display: flex;
     flex-direction: column;
+    padding-top: 3rem;
 }
 #book-title>p {
     position: relative;
     padding-left: 1rem;
-    padding-top: 4rem;
     width: 22rem;
 
     font-family: 'Playfair Display', serif;
@@ -105,7 +136,7 @@
     display: flex;
     flex-direction: row;
     padding-left: 1rem;
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
 #book-page>p {
@@ -120,3 +151,29 @@
 #current-page {
     color: #D15359 !important;
 }
+
+#book-quote {
+    position: relative;
+    padding-left: 1rem;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #6D6D6D;
+}
+
+#book-details {
+    display: flex;
+    flex-direction: row;
+    margin-left: 63%;
+    padding-top: 1rem;
+    width: auto;
+}
+
+#book-details>div {
+    padding-right: 4rem;
+}
+
