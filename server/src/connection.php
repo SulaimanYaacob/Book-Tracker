@@ -21,7 +21,8 @@
             //Create table user for id name and email
             $sql = "CREATE TABLE IF NOT EXISTS my_list_books (
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                userId BINARY(16) NOT NULL
+                bookId VARCHAR(12) NOT NULL,
+                userId VARCHAR(32) NOT NULL
             )";
 
             $stmt = $this->connection()->prepare($sql);

@@ -11,14 +11,11 @@ export const useGetBookDetails = ({ id }: Props) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    async function getBookDetails() {
-      await axios
-        .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
-        .then((res) => setBook(res.data))
-        .catch((err) => console.log(err))
-        .finally(() => setLoading(false));
-    }
-    getBookDetails();
+    axios
+      .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
+      .then((res) => setBook(res.data))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
   }, [id]);
 
   return {

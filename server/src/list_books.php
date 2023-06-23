@@ -32,7 +32,7 @@ $app->get('/api/user/{userId}', function(Request $request, Response $response, $
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':userId', $userId);
     $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_OBJ);
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $response->withJson($result);
 });
 

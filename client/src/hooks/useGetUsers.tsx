@@ -11,17 +11,14 @@ function useGetUsers() {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    const getUsers = async () => {
-      await axios
-        .get("http://localhost/myrestfulws3/api/users")
-        .then((response) => {
-          setUsers(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    getUsers();
+    axios
+      .get("http://localhost/myrestfulws3/api/users")
+      .then((response) => {
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   return { setUsers, users };
