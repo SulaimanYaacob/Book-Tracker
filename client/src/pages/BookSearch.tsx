@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BookInfo } from "../types";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "../utils/useQuery";
-import { useSearchBooks } from "../hooks/useSearchBooks";
+import useSearchBooks from "../hooks/useSearchBooks";
 import Loading from "../components/Loading";
 
 function BookSearch() {
@@ -31,9 +31,11 @@ function BookSearch() {
           Search
         </button>
       </div>
-      <p className="text-muted text-center">
-        Searched for <mark>'{term}'</mark>
-      </p>
+      {term && (
+        <p className="text-muted text-center">
+          Searched for <mark>'{term}'</mark>
+        </p>
+      )}
       <Loading loading={loading}>
         <div className="row row-cols-1 row-cols-md-3 row-cols-xl-4 g-3 mx-3">
           {books?.map(({ id, volumeInfo }: BookInfo) => (

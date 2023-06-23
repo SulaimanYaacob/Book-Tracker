@@ -6,12 +6,13 @@ type Props = {
   id?: string;
 };
 
-export const useGetBookDetails = ({ id }: Props) => {
+const useGetBookDetails = ({ id }: Props) => {
   const [book, setBook] = useState<BookInfo>();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getBookDetails() {
+      setLoading(true);
       await axios
         .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
         .then((res) => setBook(res.data))
@@ -26,3 +27,5 @@ export const useGetBookDetails = ({ id }: Props) => {
     loading,
   };
 };
+
+export default useGetBookDetails;
