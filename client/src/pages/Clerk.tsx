@@ -27,7 +27,7 @@ function Clerk() {
         <h1 className="text-center">My Books</h1>
         <div className="row">
           {listBooks?.map((book) => (
-            <div className="col-3">
+            <div key={book.id} className="col-3">
               <div className="card">
                 <img
                   src={book.volumeInfo.imageLinks?.thumbnail}

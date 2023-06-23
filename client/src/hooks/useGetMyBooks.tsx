@@ -33,11 +33,7 @@ function useGetMyBooks({ userId }: Props) {
 
     const promises = listBookId.map((book) =>
       axios
-        .get(
-          `https://www.googleapis.com/books/v1/volumes/${book.bookId}?key=${
-            import.meta.env.VITE_GOOGLE_KEY
-          }`
-        )
+        .get(`https://www.googleapis.com/books/v1/volumes/${book.bookId}`)
         .then((res) => res.data)
     );
 
