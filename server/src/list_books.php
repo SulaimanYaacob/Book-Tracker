@@ -25,12 +25,12 @@ class CorsMiddleware
 
 $app->add(new CorsMiddleware());
 
-// Get Single User
-$app->get('/api/user/{id}', function(Request $request, Response $response, $args) use ($db) {
-    $id = $args['id'];
-    $sql = "SELECT * FROM user WHERE id = :id";
+// Get List of my Books
+$app->get('/api/user/{userId}', function(Request $request, Response $response, $args) use ($db) {
+    $userId = $args['userId'];
+    $sql = "SELECT * FROM my_list_books WHERE userId = :userId";
     $stmt = $db->prepare($sql);
-    $stmt->bindParam(':id', $id);
+    $stmt->bindParam(':userId', $userId);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_OBJ);
     return $response->withJson($result);
