@@ -12,6 +12,7 @@ import BookSearch from "./pages/BookSearch.tsx";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import BookDetails from "./pages/BookDetails.tsx";
 import HomePage from "./pages/HomePage.tsx";
+import Clerk from "./pages/Clerk.tsx";
 
 //TODO Add other pages. add path & element props
 
