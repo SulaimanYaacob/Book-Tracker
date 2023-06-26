@@ -5,10 +5,11 @@ require_once './connection.php';
 $database = new database();
 $db = $database->connection();
 
+use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app = new Slim\App();
+$app = new App();
 
 class CorsMiddleware
 {
