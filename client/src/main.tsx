@@ -9,9 +9,9 @@ import {
   SignedOut,
 } from "@clerk/clerk-react";
 import BookSearch from "./pages/BookSearch.tsx";
-import Home from "./pages/Home.tsx";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import BookDetails from "./pages/BookDetails.tsx";
+import HomePage from "./pages/HomePage.tsx";
 import Clerk from "./pages/Clerk.tsx";
 
 //TODO Add other pages. add path & element props
@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <BrowserRouter>
         <SignedIn>
           <Routes>
-            <Route index element={<Home />} />
+            <Route index element={<HomePage />} />
             <Route path="/search" element={<BookSearch />} />
             <Route path="/clerk" element={<Clerk />} />
             <Route path="/" />
