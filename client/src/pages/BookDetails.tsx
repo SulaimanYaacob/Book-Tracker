@@ -6,7 +6,6 @@ function BookDetails() {
   const { id }: Readonly<Params<string>> = useParams();
   const { book, loading } = useGetBookDetails({ id });
 
-  console.log(loading);
   return (
     <Loading loading={loading}>
       <div className="container py-3">
