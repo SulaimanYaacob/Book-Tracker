@@ -6,6 +6,7 @@ import { useEffect } from "react";
 type Props = {
   searchTerm: string;
 };
+
 const useSearchBooks = ({ searchTerm }: Props) => {
   const [books, setBooks] = useState<BookInfo[]>();
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ const useSearchBooks = ({ searchTerm }: Props) => {
         .get(
           `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${
             import.meta.env.VITE_GOOGLE_KEY
-          }&maxResults=40`
+          }&maxResults=20`
         )
         .then((res) => setBooks(res.data.items))
         .catch((err) => console.log(err))

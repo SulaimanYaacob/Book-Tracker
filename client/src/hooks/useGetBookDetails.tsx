@@ -12,6 +12,7 @@ const useGetBookDetails = ({ id }: Props) => {
 
   useEffect(() => {
     async function getBookDetails() {
+      setLoading(true);
       await axios
         .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
         .then((res) => setBook(res.data))

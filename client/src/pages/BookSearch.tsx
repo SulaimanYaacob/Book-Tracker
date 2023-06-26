@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { BookInfo } from "../types";
-import useSearchBooks from "../hooks/useSearchBooks";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "../utils/useQuery";
+import useSearchBooks from "../hooks/useSearchBooks";
 import Loading from "../components/Loading";
 
 function BookSearch() {
+  const navigate = useNavigate();
   const term = useQuery().get("term") || "";
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { loading, books } = useSearchBooks({ searchTerm: term });
-  const navigate = useNavigate();
 
   const handleOnSearch = () => {
     navigate(`/search?term=${searchTerm}`);
@@ -31,9 +31,11 @@ function BookSearch() {
           Search
         </button>
       </div>
-      <p className="text-muted text-center">
-        Searched for <mark>'{term}'</mark>
-      </p>
+      {term && (
+        <p className="text-muted text-center">
+          Searched for <mark>'{term}'</mark>
+        </p>
+      )}
       <Loading loading={loading}>
         <div className="row row-cols-1 row-cols-md-3 row-cols-xl-4 g-3 mx-3">
           {books?.map(({ id, volumeInfo }: BookInfo) => (
