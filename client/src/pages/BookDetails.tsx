@@ -17,7 +17,7 @@ function BookDetails() {
   return (
     <Loading loading={loading}>
       <div className="book-details-container">
-        <div className="book-image-container">
+        <div>
           <img
             className="book-image"
             src={book?.volumeInfo?.imageLinks?.thumbnail}
@@ -29,19 +29,19 @@ function BookDetails() {
           <p className="book-description">{book?.volumeInfo?.description}</p>
           <div className="book-details">
             <p className="book-info-item">
-              <span className="book-info-label">Authors:</span>
+              <span className="book-info-label">Authors: </span>
               {book?.volumeInfo?.authors?.join(", ")}
             </p>
             <p className="book-info-item">
-              <span className="book-info-label">Publisher:</span>
+              <span className="book-info-label">Publisher: </span>
               {book?.volumeInfo?.publisher}
             </p>
             <p className="book-info-item">
-              <span className="book-info-label">Published Date:</span>
+              <span className="book-info-label">Published Date: </span>
               {book?.volumeInfo?.publishedDate}
             </p>
             <p className="book-info-item">
-              <span className="book-info-label">Page Count:</span>
+              <span className="book-info-label">Page Count: </span>
               {book?.volumeInfo?.pageCount}
             </p>
             <button
