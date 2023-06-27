@@ -5,11 +5,18 @@ import {
   useUser,
 } from "@clerk/clerk-react";
 import useGetMyBooks from "../hooks/useGetMyBooks";
+import useAddBookToList from "../hooks/useAddBookToList";
 
 //! Testing Other API
 function Clerk() {
   const { user } = useUser();
   const { listBooks } = useGetMyBooks({ userId: user?.id });
+  const { handleAddBookToList, error, loading } = useAddBookToList({
+    bookId: "123",
+    userId: user?.id,
+  });
+
+  console.log({ error, loading });
 
   return (
     <div className="my-5 container py-3 ">
@@ -43,6 +50,8 @@ function Clerk() {
           ))}
         </div>
       </div>
+
+      <button onClick={handleAddBookToList}>Add book to list</button>
     </div>
   );
 }

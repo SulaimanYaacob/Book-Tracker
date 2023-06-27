@@ -1,18 +1,18 @@
 import { useParams } from "react-router-dom";
 import useGetBookDetails from "../hooks/useGetBookDetails";
 import Loading from "../components/Loading";
-import { useState } from "react";
 import "../styles/BookDetails.css";
+import { useUser } from "@clerk/clerk-react";
+import useAddBookToList from "../hooks/useAddBookToList";
 
 function BookDetails() {
   const { id } = useParams();
+  const { user } = useUser();
   const { book, loading } = useGetBookDetails({ id });
-  const [isAddedToList, setIsAddedToList] = useState(false);
-
-  const handleAddToList = () => {
-    // Logic to add the book to the list
-    setIsAddedToList(true);
-  };
+  const { isAddedToList, error, handleAddBookToList } = useAddBookToList({
+    bookId: id,
+    userId: user?.id,
+  });
 
   return (
     <Loading loading={loading}>
@@ -46,11 +46,12 @@ function BookDetails() {
             </p>
             <button
               className="add-to-list-button"
-              onClick={handleAddToList}
+              onClick={handleAddBookToList}
               disabled={isAddedToList}
             >
               {isAddedToList ? "Added to List" : "Add to List"}
             </button>
+            {error && <p className="error-message">{error}</p>}
           </div>
         </div>
       </div>
