@@ -17,7 +17,7 @@ function BookDetails() {
         <div className="row g-4">
           <div className="col-md-4 align-self-start text-center">
             <img
-              className="h-40 w-40"
+              className="h-100 w-100"
               src={book?.volumeInfo?.imageLinks?.thumbnail}
               alt={book?.volumeInfo?.title}
             />
@@ -25,9 +25,7 @@ function BookDetails() {
 
           <div className="col-md-8">
             <h1>{book?.volumeInfo?.title}</h1>
-            {book?.volumeInfo.description && (
-                <p dangerouslySetInnerHTML={{ __html: book.volumeInfo.description }}></p>
-              )}
+            <p>{book?.volumeInfo?.description}</p>
             <p>{book?.volumeInfo?.authors}</p>
             <p>{book?.volumeInfo?.publisher}</p>
             <p>{book?.volumeInfo?.publishedDate}</p>

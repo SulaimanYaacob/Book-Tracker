@@ -4,8 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "../utils/useQuery";
 import useSearchBooks from "../hooks/useSearchBooks";
 import Loading from "../components/Loading";
-import SideBar from "../SideBar";
-import Header from "../header";
+import Sidebar from "../components/Sidebar";
 
 function BookSearch() {
   const navigate = useNavigate();
@@ -19,9 +18,8 @@ function BookSearch() {
   };
 
   return (
-    <div>
-      <SideBar />
-      <Header />
+    <>
+      <Sidebar />
       <div className="container-sm  pb-3 px-0 w-75">
         <div className="input-group py-3">
           <input
@@ -32,7 +30,10 @@ function BookSearch() {
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleOnSearch()}
           />
-          <button className="btn btn-outline-secondary" onClick={handleOnSearch}>
+          <button
+            className="btn btn-outline-secondary"
+            onClick={handleOnSearch}
+          >
             Search
           </button>
         </div>
@@ -67,8 +68,7 @@ function BookSearch() {
           </div>
         </Loading>
       </div>
-    </div>
-
+    </>
   );
 }
 
