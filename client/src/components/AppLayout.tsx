@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/AppLayout.css";
 import { useUser } from "@clerk/clerk-react";
+import React from "react";
 
-const AppLayout = ({ children }: { children: any }) => {
+const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUser();
+  const location = useLocation();
   const name = user?.firstName ?? " " + " " + user?.lastName ?? "";
   const currentDate = new Date();
 
@@ -12,6 +14,7 @@ const AppLayout = ({ children }: { children: any }) => {
     location.pathname === "/search" || location.pathname.startsWith("/book");
   const isActiveProgress = location.pathname === "/progress";
   const isActiveProfile = location.pathname === "/profile";
+  console.log(location.pathname);
 
   return (
     <div>
