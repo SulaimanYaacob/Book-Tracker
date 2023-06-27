@@ -7,31 +7,26 @@ type Props = {
   searchTerm: string;
 };
 
-export const useSearchBooks = ({ searchTerm }: Props) => {
+const useSearchBooks = ({ searchTerm }: Props) => {
   const [books, setBooks] = useState<BookInfo[]>();
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
-    async function fetchBooks() {
-      if (!searchTerm) {
-        setBooks(undefined);
-        return;
-      }
-
-      setLoading(true);
-
-      await axios
-        .get(
-          `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${
-            import.meta.env.VITE_GOOGLE_KEY
-          }&maxResults=40`
-        )
-        .then((res) => setBooks(res.data.items))
-        .catch((err) => console.log(err))
-        .finally(() => setLoading(false));
+    if (!searchTerm) {
+      setBooks(undefined);
+      return;
     }
 
-    fetchBooks();
+    setLoading(true);
+
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${
+          import.meta.env.VITE_GOOGLE_KEY
+        }&maxResults=20`
+      )
+      .then((res) => setBooks(res.data.items))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
   }, [searchTerm]);
 
   return {
@@ -39,3 +34,5 @@ export const useSearchBooks = ({ searchTerm }: Props) => {
     loading,
   };
 };
+
+export default useSearchBooks;
