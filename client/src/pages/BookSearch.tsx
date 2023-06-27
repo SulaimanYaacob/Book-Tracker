@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "../utils/useQuery";
 import useSearchBooks from "../hooks/useSearchBooks";
 import Loading from "../components/Loading";
-import AppLayout from "../components/AppLayout";
 
 function BookSearch() {
   const navigate = useNavigate();

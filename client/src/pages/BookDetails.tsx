@@ -1,7 +1,6 @@
 import { Params, useParams } from "react-router-dom";
 import useGetBookDetails from "../hooks/useGetBookDetails";
 import Loading from "../components/Loading";
-import AppLayout from "../components/AppLayout";
 
 function BookDetails() {
   const { id }: Readonly<Params<string>> = useParams();
