@@ -14,7 +14,6 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
     location.pathname === "/search" || location.pathname.startsWith("/book");
   const isActiveProgress = location.pathname === "/progress";
   const isActiveProfile = location.pathname === "/profile";
-  console.log(location.pathname);
 
   return (
     <div>
