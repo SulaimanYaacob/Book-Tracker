@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "../utils/useQuery";
 import useSearchBooks from "../hooks/useSearchBooks";
 import Loading from "../components/Loading";
-import Sidebar from "../components/Sidebar";
+import AppLayout from "../components/AppLayout";
 
 function BookSearch() {
   const navigate = useNavigate();
@@ -19,7 +19,6 @@ function BookSearch() {
 
   return (
     <>
-      <Sidebar />
       <div className="container-sm  pb-3 px-0 w-75">
         <div className="input-group py-3">
           <input

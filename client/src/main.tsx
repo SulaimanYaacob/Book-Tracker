@@ -12,6 +12,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import BookDetails from "./pages/BookDetails.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import Clerk from "./pages/Clerk.tsx";
+import AppLayout from "./components/AppLayout.tsx";
+import "./styles/index.css";
 
 //TODO Add other pages. add path & element props
 
@@ -20,14 +22,21 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_KEY}>
       <BrowserRouter>
         <SignedIn>
-          <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="/search" element={<BookSearch />} />
-            <Route path="/clerk" element={<Clerk />} />
-            <Route path="/" />
-            <Route path="*" element={<h1>Error 404</h1>} />
-            <Route path="/book/:id" element={<BookDetails />} />
-          </Routes>
+          <AppLayout>
+            <Routes>
+              <Route index element={<HomePage />} />
+              <Route path="/search" element={<BookSearch />} />
+              <Route path="/clerk" element={<Clerk />} />
+              <Route path="/" />
+              <Route path="/book/:id" element={<BookDetails />} />
+              <Route
+                path="*"
+                element={
+                  <h1 style={{ textAlign: "center" }}>Page Not Found</h1>
+                }
+              />
+            </Routes>
+          </AppLayout>
         </SignedIn>
         <SignedOut>
           <RedirectToSignIn />

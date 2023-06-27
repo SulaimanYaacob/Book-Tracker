@@ -1,27 +1,13 @@
-import profilePicture from "../assets/images/notion-avatar.png";
 import richDadPoorDad from "../assets/images/RichDadPoorDad.jpeg";
 import surrondedBySetbacks from "../assets/images/SurroundedBySetbacks.jpg";
 import theLeanStartup from "../assets/images/TheLeanStartup.jpeg";
 import biografiMuhammad from "../assets/images/BiografiMuhammadbinAbdullah.jpeg";
-import Sidebar from "../components/Sidebar";
+import "../styles/HomePage.css";
 
 function HomePage() {
-  const currentDate = new Date();
-
   return (
     <div className="fluid-container">
       <div id="background"></div>
-      <Sidebar />
-      <header>
-        <div id="date">{currentDate.toDateString()}</div>
-        <div id="account">
-          <div
-            id="profile-pic"
-            style={{ backgroundImage: `url(${profilePicture})` }}
-          ></div>
-          <div id="profile-name">Amin Haiqal</div>
-        </div>
-      </header>
       <div id="hero">
         <div id="title">
           <span>Happy Reading,</span>
@@ -112,6 +98,7 @@ function HomePage() {
             <p id="ISBN">9781785043666</p>
           </div>
         </div>
+        <div />
       </div>
     </div>
   );
