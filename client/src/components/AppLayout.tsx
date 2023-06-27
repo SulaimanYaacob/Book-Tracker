@@ -6,7 +6,7 @@ import React from "react";
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const { user } = useUser();
   const location = useLocation();
-  const name = user?.firstName ?? " " + " " + user?.lastName ?? "";
+  const name = user?.firstName + " " + user?.lastName;
   const currentDate = new Date();
 
   const isActiveHome = location.pathname === "/";

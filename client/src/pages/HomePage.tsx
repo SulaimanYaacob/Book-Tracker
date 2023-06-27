@@ -3,8 +3,14 @@ import surrondedBySetbacks from "../assets/images/SurroundedBySetbacks.jpg";
 import theLeanStartup from "../assets/images/TheLeanStartup.jpeg";
 import biografiMuhammad from "../assets/images/BiografiMuhammadbinAbdullah.jpeg";
 import "../styles/HomePage.css";
+import { useUser } from "@clerk/clerk-react";
 
 function HomePage() {
+  const { user } = useUser();
+  const name = user?.firstName + " " + user?.lastName;
+  const user_id = user?.id;
+  console.log(user_id);
+
   return (
     <div className="fluid-container">
       <div id="background"></div>
@@ -12,7 +18,7 @@ function HomePage() {
         <div id="title">
           <span>Happy Reading,</span>
           <br />
-          <span>Amin Haiqal</span>
+          <span>{name}</span>
         </div>
         <div id="description">
           Don't let your love for books fade away! Rediscover the enhancement by

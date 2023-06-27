@@ -24,13 +24,7 @@
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 bookId VARCHAR(12) NOT NULL,
                 userId VARCHAR(32) NOT NULL
-            );
-
-            CREATE TABLE IF NOT EXISTS user (
-                userId VARCHAR(32) NOT NULL PRIMARY KEY,
-                name VARCHAR(32) NOT NULL,
-                email VARCHAR(32) NOT NULL
-            )";
+            );";
 
             $stmt = $this->connection()->prepare($sql);
             $stmt->execute();
