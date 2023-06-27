@@ -1,18 +1,21 @@
 import { Params, useParams } from "react-router-dom";
 import useGetBookDetails from "../hooks/useGetBookDetails";
 import Loading from "../components/Loading";
+import SideBar from "../SideBar";
 
 function BookDetails() {
   const { id }: Readonly<Params<string>> = useParams();
   const { book, loading } = useGetBookDetails({ id });
 
   return (
-    <Loading loading={loading}>
+    <div>
+      <SideBar />
+      <Loading loading={loading}>
       <div className="container py-3">
         <div className="row g-4">
           <div className="col-md-4 align-self-start text-center">
             <img
-              className="h-100 w-100"
+              className="h-40 w-40"
               src={book?.volumeInfo?.imageLinks?.thumbnail}
               alt={book?.volumeInfo?.title}
             />
@@ -20,7 +23,9 @@ function BookDetails() {
 
           <div className="col-md-8">
             <h1>{book?.volumeInfo?.title}</h1>
-            <p>{book?.volumeInfo?.description}</p>
+            {book?.volumeInfo.description && (
+                <p dangerouslySetInnerHTML={{ __html: book.volumeInfo.description }}></p>
+              )}
             <p>{book?.volumeInfo?.authors}</p>
             <p>{book?.volumeInfo?.publisher}</p>
             <p>{book?.volumeInfo?.publishedDate}</p>
@@ -29,6 +34,7 @@ function BookDetails() {
         </div>
       </div>
     </Loading>
+    </div>
   );
 }
 

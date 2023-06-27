@@ -1,55 +1,26 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../HomePage.css'
-import profilePicture from '../assets/images/notion-avatar.png';
+import Sidebar from '../SideBar';
+import Header from '../header';
 import richDadPoorDad from '../assets/images/RichDadPoorDad.jpeg';
 import surrondedBySetbacks from '../assets/images/SurroundedBySetbacks.jpg';
 import theLeanStartup from '../assets/images/TheLeanStartup.jpeg';
 import biografiMuhammad from '../assets/images/BiografiMuhammadbinAbdullah.jpeg';
 
-import { Link } from 'react-router-dom';
+import { useUser } from "@clerk/clerk-react";
 
 function HomePage() {
-    const currentDate = new Date();
-    const isActiveHome = location.pathname === '/';
-    const isActiveSearch = location.pathname === '/search';
-    const isActiveProgress = location.pathname === '/progress';
-    const isActiveProfile = location.pathname === '/profile';
+    const { user } = useUser();
+    const name = user?.firstName + ' ' + user?.lastName;
 
     return (
         <div className="fluid-container">
             <div id='background'></div>
-            <div id='sidebar'>
-                <div id='Home' className={isActiveHome ? 'active' : ''}>
-                    <Link to="/" id='Link'>
-                        <span><i className="gg-home"></i></span>
-                    </Link>
-                </div>
-                <div id='Search' className={isActiveSearch ? 'active' : ''}>
-                    <Link to="/search" id='Link'>
-                        <span><i className="gg-search"></i></span>
-                    </Link>
-                </div>
-                <div id='Progress' className={isActiveProgress ? 'active' : ''}>
-                    <Link to="/progress" id='Link'>
-                        <span><i className="gg-open-collective"></i></span>
-                    </Link>
-                </div>
-                <div id='Profile' className={isActiveProfile ? 'active' : ''}>
-                    <Link to="/profile" id='Link'>
-                        <span><i className="gg-user"></i></span>
-                    </Link>
-                </div>
-            </div>
-            <header>
-                <div id='date'>{currentDate.toDateString()}</div>
-                <div id='account'>
-                    <div id='profile-pic' style={{ backgroundImage: `url(${profilePicture})` }}></div>
-                    <div id='profile-name'>Amin Haiqal</div>
-                </div>
-            </header>
+            <Sidebar />
+            <Header />
             <div id='hero'>
                 <div id='title'>
-                    <span>Happy Reading,</span><br /><span>Amin Haiqal</span>
+                    <span>Happy Reading,</span><br /><span>{name}</span>
                 </div>
                 <div id='description'>Don't let your love for books fade away! Rediscover the enhancement by tracking your favorite read. Let's keep the literacy going.</div>
                 <div id='button'>
