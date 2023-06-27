@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "../utils/useQuery";
 import useSearchBooks from "../hooks/useSearchBooks";
 import Loading from "../components/Loading";
+import "../styles/BookSearch.css";
 
 function BookSearch() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function BookSearch() {
 
   return (
     <>
-      <div className="container-sm  pb-3 px-0 w-75">
+      <div className="container-sm pb-3 px-0 w-75">
         <div className="input-group py-3">
           <input
             type="text"
@@ -41,25 +42,20 @@ function BookSearch() {
           </p>
         )}
         <Loading loading={loading}>
-          <div className="row row-cols-1 row-cols-md-3 row-cols-xl-4 g-3 mx-3">
+          <div className="book-card-container">
             {books?.map(({ id, volumeInfo }: BookInfo) => (
-              <div key={id} className="col">
-                <div className="card h-100">
-                  <img
-                    src={volumeInfo.imageLinks?.thumbnail}
-                    className="card-img-top img-fluid h-75"
-                    alt={volumeInfo.title}
-                  />
-                  <div className="card-body">
-                    <Link
-                      to={`/book/${id}`}
-                      className="card-title  fw-bold text-decoration-none"
-                    >
-                      {volumeInfo.title.length > 40
-                        ? volumeInfo.title.substring(0, 40) + "..."
-                        : volumeInfo.title}
-                    </Link>
-                  </div>
+              <div key={id} className="book-card">
+                <img
+                  src={volumeInfo.imageLinks?.thumbnail}
+                  className="book-card-img"
+                  alt={volumeInfo.title}
+                />
+                <div className="book-card-body">
+                  <Link to={`/book/${id}`} className="book-card-title">
+                    {volumeInfo.title.length > 40
+                      ? volumeInfo.title.substring(0, 40) + "..."
+                      : volumeInfo.title}
+                  </Link>
                 </div>
               </div>
             ))}

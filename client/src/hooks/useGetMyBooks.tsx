@@ -19,7 +19,7 @@ function useGetMyBooks({ userId }: Props) {
   useEffect(() => {
     axios
       .get(
-        `http://localhost/book-tracker/server/src/list_books.php/api/user/${userId}`
+        `http://localhost/book-tracker/server/src/books.php/api/books/${userId}`
       )
       .then((response) => setListBookId(response.data))
       .catch((error) => console.log(error));
