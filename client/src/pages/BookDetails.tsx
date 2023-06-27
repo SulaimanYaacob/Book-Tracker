@@ -2,6 +2,7 @@ import { Params, useParams } from "react-router-dom";
 import useGetBookDetails from "../hooks/useGetBookDetails";
 import Loading from "../components/Loading";
 import SideBar from "../SideBar";
+import Header from "../header";
 
 function BookDetails() {
   const { id }: Readonly<Params<string>> = useParams();
@@ -10,6 +11,7 @@ function BookDetails() {
   return (
     <div>
       <SideBar />
+      <Header />
       <Loading loading={loading}>
       <div className="container py-3">
         <div className="row g-4">
