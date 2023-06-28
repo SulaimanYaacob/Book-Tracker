@@ -5,7 +5,7 @@
         //db credentials
         private $host = "localhost";  
         private $username = "root";
-        private $password = "HawbAndFj6";
+        private $password = "";
         private $db_name = "book_tracker";
         
         // Create connection
