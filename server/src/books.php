@@ -37,6 +37,7 @@ $app->get('/api/books/{userId}', function(Request $request, Response $response, 
 });
 
 // Add book to my list
+
 $app->post('/api/books/add', function(Request $request, Response $response) use ($db) {
 
     $bookId = $request->getParam('bookId');
@@ -70,39 +71,40 @@ $app->post('/api/books/add', function(Request $request, Response $response) use 
         // Get book information from Google Books API
         $apiUrl = "https://www.googleapis.com/books/v1/volumes/{$bookId}";
         $apiresponse = file_get_contents($apiUrl);
-        echo ('console.log(' + $apiresponse + ')');
+        echo $apiresponse;
 
         if ($apiresponse == true) {
             $responseData = json_decode($apiresponse, true);
+            
             $bookId = $responseData['id'];
             $title = $responseData['volumeInfo']['title'];
             $author = $responseData['volumeInfo']['authors'][0];
             $genre = $responseData['volumeInfo']['categories'][0];
-            $image = $responseData['volumeInfo']['imageLinks']['thumbnail'];
+            $imageLink = $responseData['volumeInfo']['imageLinks']['thumbnail'];
             $totalPageCount = $responseData['volumeInfo']['pageCount'];
             $publisher = $responseData['volumeInfo']['publisher'];
             $publishedDate = $responseData['volumeInfo']['publishedDate'];
             $ISBN = $responseData['volumeInfo']['industryIdentifiers'][0]['identifier'];
-
+            
             // Update values in book_information table
-            $sql = "UPDATE book_information SET title = :title, author = :author, genre = :genre, image = :image, totalPageCount = :totalPageCount, publisher = :publisher, publishedDate = :publishedDate, ISBN = :ISBN WHERE bookId = :bookId";
+            $sql = "UPDATE book_information SET title = :title, author = :author, genre = :genre, imageLink = :imageLink, totalPageCount = :totalPageCount, publisher = :publisher, publishedDate = :publishedDate, ISBN = :ISBN WHERE bookId = :bookId";
             $stmt = $db->prepare($sql);
             $stmt->bindParam(':bookId', $bookId);
             $stmt->bindParam(':title', $title);
             $stmt->bindParam(':author', $author);
             $stmt->bindParam(':genre', $genre);
-            $stmt->bindParam(':image', $image);
+            $stmt->bindParam(':imageLink', $imageLink);
             $stmt->bindParam(':totalPageCount', $totalPageCount);
             $stmt->bindParam(':publisher', $publisher);
             $stmt->bindParam(':publishedDate', $publishedDate);
             $stmt->bindParam(':ISBN', $ISBN);
-
             $stmt->execute();
         }
         
         return $response->write("Book added");
     }
 });
+
 
 
 // Delete book from my list
@@ -134,7 +136,7 @@ $app->get('/api/books/read/{userId}', function(Request $request, Response $respo
     }
 
 
-    $sql = "SELECT * FROM book_information WHERE bookId IN (" . implode(',', array_map('intval', $bookIds)) . ")";
+    $sql = "SELECT * FROM book_information WHERE bookId IN (" . implode(',', array_map('intval', $bookIds)) . ") ORDER BY `timestamp` DESC";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_OBJ);

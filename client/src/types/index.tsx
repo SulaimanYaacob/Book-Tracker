@@ -21,11 +21,12 @@ export type BookDetails = {
   status: string;
   author: string;
   genre: string;
-  image: string;
+  imageLink: string;
   pageCount: number;
   totalPageCount: number;
   publisher: string;
   publishedDate: string;
   isbn: string;
   quote: string;
+  timestamp: Date;
 }

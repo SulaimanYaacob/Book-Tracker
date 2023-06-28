@@ -36,7 +36,7 @@ function HomePage() {
               <div
                 key={book.id}
                 id="cover"
-                style={{ backgroundImage: `url(${book.image})` }}
+                style={{ backgroundImage: `url(${book.imageLink})` }}
               >
                 <div id="name">{book.title}</div>
               </div>
@@ -49,18 +49,18 @@ function HomePage() {
         <div id="section2">
           <div id="current-read">
             {listBooks?.length > 0 ? (listBooks.map((book) => (
-              <div key={book.id}>
+              <div key={listBooks[0].id}>
                 <div>
-                  <div id="cover" style={{ backgroundImage: `url(${book.image})` }}></div>
+                  <div id="cover" style={{ backgroundImage: `url(${listBooks[0].imageLink})` }}></div>
                   <div id="description">
-                    <div id="title">{book.title}</div>
+                    <div id="title">{listBooks[0].title}</div>
                     <div id="progress">
-                      <span>{book.pageCount}</span>
+                      <span>{listBooks[0].pageCount}</span>
                       <span> /</span>
-                      <span>{book.totalPageCount} pages</span>
+                      <span>{listBooks[0].totalPageCount} pages</span>
                     </div>
                     <div id="quotes">
-                      <p>{book.quote}</p>
+                      <p>{listBooks[0].quote}</p>
                     </div>
                   </div>
                 </div>
@@ -75,12 +75,12 @@ function HomePage() {
                     <p>ISBN</p>
                   </div>
                   <div id="values">
-                    <p>{book.status}</p>
-                    <p>{book.author}</p>
-                    <p>{book.genre}</p>
-                    <p>{book.publisher}</p>
-                    <p>{book.publishedDate}</p>
-                    <p>{book.isbn}</p>
+                    <p>{listBooks[0].status}</p>
+                    <p>{listBooks[0].author}</p>
+                    <p>{listBooks[0].genre}</p>
+                    <p>{listBooks[0].publisher}</p>
+                    <p>{listBooks[0].publishedDate}</p>
+                    <p>{listBooks[0].isbn}</p>
                   </div>
                 </div>
               </div>           

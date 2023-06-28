@@ -37,7 +37,7 @@
                 status VARCHAR(255),
                 author VARCHAR(255),
                 genre VARCHAR(255),
-                image VARCHAR(255),
+                imageLink VARCHAR(335),
                 pageCount INT(6),
                 totalPageCount INT(6),
                 publisher VARCHAR(255),

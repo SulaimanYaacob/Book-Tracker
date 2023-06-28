@@ -7,7 +7,6 @@ type Props = {
   };
 
 function useGetMyBooksList({ userId }: Props) {
-    //const [listBookId, setListBookId] = useState<ListBookId[]>([]);
     const [listBooks, setListBooks] = useState<BookDetails[]>([]);
 
     useEffect(() => {
