@@ -5,12 +5,6 @@ import { BookInfo } from "../types";
 type Props = {
     userId?: string;
   };
-  
-  interface ListBookId {
-    id: string;
-    bookId: string;
-    userId: string;
-  }
 
 function useGetMyBooksList({ userId }: Props) {
     //const [listBookId, setListBookId] = useState<ListBookId[]>([]);
