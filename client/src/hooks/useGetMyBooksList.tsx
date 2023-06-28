@@ -11,10 +11,10 @@ function useGetMyBooksList({ userId }: Props) {
     const [listBooks, setListBooks] = useState<BookDetails[]>([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/server/src/list_books.php/api/user/${userId}`)
-          .then((response) => response.data)
+      axios.get(`http://localhost:3000/server/src/books.php/api/books/read/${userId}`)
+          .then((response) => setListBooks(response.data))
           .catch((error) => console.log(error));
-      }, [userId]);
+  }, [userId]);
 
     return { listBooks };
 }

@@ -66,6 +66,7 @@ $app->post('/api/books/add', function(Request $request, Response $response) use 
         $stmt->bindParam(':bookId', $bookId);
         $stmt->execute();
         
+        // Get book information from Google Books API
         $apiUrl = "https://www.googleapis.com/books/v1/volumes/{$bookId}";
         $apiresponse = file_get_contents($apiUrl);
 
@@ -112,6 +113,31 @@ $app->delete('/api/books/delete', function(Request $request, Response $response)
     $stmt->bindParam(':userId', $userId);
     $stmt->execute();
     return $response->write("Book deleted");
+});
+
+// Read book from my list
+$app->get('/api/books/read/{userId}', function(Request $request, Response $response, $args) use ($db) {
+    $userId = $args['userId'];
+    
+    $sql = "SELECT * FROM my_list_books WHERE userId = :userId";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':userId', $userId);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $bookIds = array();
+    foreach ($result as $row) {
+        $bookIds[] = $row->bookId;
+    }
+
+
+    $sql = "SELECT * FROM book_information WHERE bookId IN (" . implode(',', array_map('intval', $bookIds)) . ")";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $response->withJson($result);
+    
 });
 
 $app->run();

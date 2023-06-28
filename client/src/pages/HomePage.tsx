@@ -31,19 +31,28 @@ function HomePage() {
       </div>
       <div id="section1">
         <div id="title">My Books</div>
+
+
         <div id="book-list">
           {listBooks?.length > 0 ? (
             listBooks.map((book) => (
               <div
-                className="book"
-                style={{
-                  backgroundImage: `url(${book.volumeInfo?.imageLinks?.thumbnail})`,
-                }}
-              ></div>
+        key={book.id}
+        className="book"
+        style={{
+          backgroundImage: `url(${book.image})`,
+          width: "100px",
+          height: "150px",
+        }}
+      >
+        <div className="book-title">{book.title}</div>
+      </div>
             ))
           ) : (
             <div>No books added yet!</div>)}
         </div>
+
+
         <div id="section2">
           <div id="current-read">
             <div
