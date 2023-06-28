@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { BookInfo } from "../types";
+import { BookDetails } from "../types";
 
 type Props = {
     userId?: string;
@@ -8,7 +8,7 @@ type Props = {
 
 function useGetMyBooksList({ userId }: Props) {
     //const [listBookId, setListBookId] = useState<ListBookId[]>([]);
-    const [listBooks, setListBooks] = useState<BookInfo[]>([]);
+    const [listBooks, setListBooks] = useState<BookDetails[]>([]);
 
     useEffect(() => {
         axios.get(`http://localhost:3000/server/src/list_books.php/api/user/${userId}`)

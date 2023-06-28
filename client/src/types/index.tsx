@@ -13,3 +13,19 @@ export type BookInfo = {
     };
   };
 };
+
+export type BookDetails = {
+  volumeInfo: any;
+  id: string;
+  title: string;
+  status: string;
+  author: string;
+  genre: string;
+  image: string;
+  pageCount: number;
+  totalPageCount: number;
+  publisher: string;
+  publishedDate: string;
+  isbn: string;
+  quote: string;
+}

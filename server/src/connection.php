@@ -30,8 +30,9 @@
             //Create table book_information for book information
             $sql2 = "
             CREATE TABLE IF NOT EXISTS book_information (
-                bookId VARCHAR(12) PRIMARY KEY NOT NULL REFERENCES book_information_ibfk_1 (bookId),
-                title VARCHAR(255) NOT NULL,
+                id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                bookId VARCHAR(12) REFERENCES book_information_ibfk_1 (bookId),
+                title VARCHAR(255),
                 status VARCHAR(255),
                 author VARCHAR(255),
                 genre VARCHAR(255),
