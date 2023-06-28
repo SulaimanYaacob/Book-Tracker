@@ -38,14 +38,10 @@ function HomePage() {
             listBooks.map((book) => (
               <div
         key={book.id}
-        className="book"
-        style={{
-          backgroundImage: `url(${book.image})`,
-          width: "100px",
-          height: "150px",
-        }}
+        id="cover"
+        style={{backgroundImage: `url(${book.image})`}}
       >
-        <div className="book-title">{book.title}</div>
+        <div id="name">{book.title}</div>
       </div>
             ))
           ) : (
@@ -55,43 +51,40 @@ function HomePage() {
 
         <div id="section2">
           <div id="current-read">
-            <div
-              id="cover"
-              style={{ backgroundImage: `url(${surrondedBySetbacks})` }}
-            ></div>
-            <div id="description">
-              <div id="title">
-                Surrounded by Setbacks: Or, How to Succeed When Everything's Gone
-                Bad
-              </div>
-              <div id="progress">
-                <span>236</span>
-                <span> /</span>
-                <span>317</span> Pages
-              </div>
-              <div id="quotes">
-                Success is not final, failure is not fatal, It is the courage to
-                continue that counts.
-              </div>
-            </div>
-          </div>
-          <div id="current-read-details">
-            <div id="book-details">
-              <p>Status</p>
-              <p>Author</p>
-              <p>Genre</p>
-              <p>Publisher</p>
-              <p>Dates</p>
-              <p>ISBN</p>
-            </div>
-            <div id="values">
-              <p>Reading</p>
-              <p id="author">Thomas Erikson</p>
-              <p id="genre">Self-Help</p>
-              <p id="publisher">Penguin Random House UK</p>
-              <p id="dates">2021</p>
-              <p id="ISBN">9781785043666</p>
-            </div>
+            {listBooks?.length > 0 ? (listBooks.map((book) => (
+              <div>
+                <div id="cover" style={{backgroundImage: `url(${book.image})`}}></div>
+                <div id="description">
+                  <div id="title">{book.title}</div>
+                  <div id="progress">
+                    <span>{book.pageCount}</span>
+                    <span> /</span>
+                    <span>{book.totalPageCount} pages</span>
+                  </div>
+                  <div id="quotes">
+                    <p>{book.quote}</p>
+                  </div>
+                </div>
+                <div id="current-read-details">
+                  <div id="book-details">
+                    <p>Status</p>
+                    <p>Author</p>
+                    <p>Genre</p>
+                    <p>Publisher</p>
+                    <p>Dates</p>
+                    <p>ISBN</p>
+                  </div>
+                  <div id="values">
+                    <p>{book.status}</p>
+                    <p>{book.author}</p>
+                    <p>{book.genre}</p>
+                    <p>{book.publisher}</p>
+                    <p>{book.publishedDate}</p>
+                    <p>{book.isbn}</p>
+                  </div>
+                </div>
+              </div>           
+            ))) : (<div>No books added yet!</div>)}
           </div>
           <div />
         </div>
