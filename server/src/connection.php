@@ -33,6 +33,7 @@
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
                 bookId VARCHAR(12) REFERENCES book_information_ibfk_1 (bookId),
                 title VARCHAR(255),
+                timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 status VARCHAR(255),
                 author VARCHAR(255),
                 genre VARCHAR(255),

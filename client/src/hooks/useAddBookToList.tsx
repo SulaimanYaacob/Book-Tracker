@@ -25,6 +25,7 @@ const useAddBookToList = ({ bookId, userId }: Props) => {
         setError("Book already exists in your list");
       else setIsAddedToList(true);
     } catch (error) {
+      console.log(error);
       setError("Error adding book to the list");
     } finally {
       setLoading(false);

@@ -38,6 +38,7 @@ $app->get('/api/books/{userId}', function(Request $request, Response $response, 
 
 // Add book to my list
 $app->post('/api/books/add', function(Request $request, Response $response) use ($db) {
+
     $bookId = $request->getParam('bookId');
     $userId = $request->getParam('userId');
 
@@ -65,10 +66,11 @@ $app->post('/api/books/add', function(Request $request, Response $response) use 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':bookId', $bookId);
         $stmt->execute();
-        
+
         // Get book information from Google Books API
         $apiUrl = "https://www.googleapis.com/books/v1/volumes/{$bookId}";
         $apiresponse = file_get_contents($apiUrl);
+        echo ('console.log(' + $apiresponse + ')');
 
         if ($apiresponse == true) {
             $responseData = json_decode($apiresponse, true);
@@ -137,7 +139,6 @@ $app->get('/api/books/read/{userId}', function(Request $request, Response $respo
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $response->withJson($result);
-    
 });
 
 $app->run();

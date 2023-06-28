@@ -48,9 +48,11 @@
   font-family: "Playfair Display", serif;
   font-size: 24px;
   padding-left: 8rem;
+  width: 15rem;
 }
 #section1 > #book-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -59,7 +61,7 @@
   padding-bottom: 16px;
   width: 46rem;
 }
-#section1 > #book-list  {
+#section1 {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -79,7 +81,7 @@
   font-size: 14px;
   padding-top: 14.2rem;
 }
-#section2 {
+#section2 > #current-read > div{
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -87,7 +89,7 @@
   top: 10%;
   left: 48%;
 }
-#section2 > #current-read > div {
+#section2 > #current-read > div > div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -95,42 +97,42 @@
   width: 40.7rem;
   height: 320px;
 }
-#section2 > #current-read > div > #cover {
+#section2 > #current-read > div > div > #cover {
   width: 255px;
   height: 400px;
   scale: 0.7;
   background-size: cover;
   box-shadow: -16px 18px 40px 0px rgba(0, 0, 0, 0.25);
 }
-#section2 > #current-read > div > #description {
+#section2 > #current-read > div > div > #description {
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: start;
 }
-#section2 > #current-read > div > #description > #title {
+#section2 > #current-read > div > div > #description > #title {
   font-family: "Playfair Display", serif;
   font-size: 24px;
   width: 20rem;
   padding-bottom: 32px;
 }
-#section2 > #current-read > div > #description > #progress {
+#section2 > #current-read > div > div > #description > #progress {
   font-family: "Inter", sans-serif;
   font-size: 18px;
   width: 20rem;
   color: #545454;
 }
-#section2 > #current-read > div > #description > #progress span:nth-child(1) {
+#section2 > #current-read > div > div > #description > #progress span:nth-child(1) {
   color: #d15359;
 }
 
-#section2 > #current-read > div > #description > #quotes {
+#section2 > #current-read > div > div > #description > #quotes {
   font-family: "Inter", sans-serif;
   padding-top: 24px;
   font-size: 14px;
   width: 20rem;
 }
-#section2 > #current-read-details {
+#section2 > #current-read > div > #current-read-details {
   display: flex;
   flex-direction: row;
   align-items: start;
@@ -139,7 +141,7 @@
   padding-left: 12rem;
   padding-top: 12px;
 }
-#section2 > #current-read-details > #book-details,
+#section2 > #current-read > div > #current-read-details > #book-details,
 #values {
   display: flex;
   flex-direction: column;
@@ -147,12 +149,13 @@
   justify-content: start;
   padding-right: 24px;
 }
-#section2 > #current-read-details > #book-details > p {
+#section2 > #current-read > div > #current-read-details > #book-details > p {
   font-family: "Inter", sans-serif;
   font-size: 14px;
   color: #545454;
 }
-#section2 > #current-read-details > #values {
+#section2 > #current-read > div > #current-read-details > #values {
+  padding-top: 20px;
   font-family: "Inter", sans-serif;
   font-size: 14px;
   color: #000000;

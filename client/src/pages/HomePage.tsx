@@ -1,4 +1,3 @@
-import surrondedBySetbacks from "../assets/images/SurroundedBySetbacks.jpg";
 import "../styles/HomePage.css";
 import { useUser } from "@clerk/clerk-react";
 import useGetMyBooksList from "../hooks/useGetMyBooksList";
@@ -31,18 +30,16 @@ function HomePage() {
       </div>
       <div id="section1">
         <div id="title">My Books</div>
-
-
         <div id="book-list">
           {listBooks?.length > 0 ? (
             listBooks.map((book) => (
               <div
-        key={book.id}
-        id="cover"
-        style={{backgroundImage: `url(${book.image})`}}
-      >
-        <div id="name">{book.title}</div>
-      </div>
+                key={book.id}
+                id="cover"
+                style={{ backgroundImage: `url(${book.image})` }}
+              >
+                <div id="name">{book.title}</div>
+              </div>
             ))
           ) : (
             <div>No books added yet!</div>)}
@@ -52,19 +49,22 @@ function HomePage() {
         <div id="section2">
           <div id="current-read">
             {listBooks?.length > 0 ? (listBooks.map((book) => (
-              <div>
-                <div id="cover" style={{backgroundImage: `url(${book.image})`}}></div>
-                <div id="description">
-                  <div id="title">{book.title}</div>
-                  <div id="progress">
-                    <span>{book.pageCount}</span>
-                    <span> /</span>
-                    <span>{book.totalPageCount} pages</span>
-                  </div>
-                  <div id="quotes">
-                    <p>{book.quote}</p>
+              <div key={book.id}>
+                <div>
+                  <div id="cover" style={{ backgroundImage: `url(${book.image})` }}></div>
+                  <div id="description">
+                    <div id="title">{book.title}</div>
+                    <div id="progress">
+                      <span>{book.pageCount}</span>
+                      <span> /</span>
+                      <span>{book.totalPageCount} pages</span>
+                    </div>
+                    <div id="quotes">
+                      <p>{book.quote}</p>
+                    </div>
                   </div>
                 </div>
+                
                 <div id="current-read-details">
                   <div id="book-details">
                     <p>Status</p>
