@@ -1,10 +1,13 @@
-import richDadPoorDad from "../assets/images/RichDadPoorDad.jpeg";
-import surrondedBySetbacks from "../assets/images/SurroundedBySetbacks.jpg";
-import theLeanStartup from "../assets/images/TheLeanStartup.jpeg";
-import biografiMuhammad from "../assets/images/BiografiMuhammadbinAbdullah.jpeg";
 import "../styles/HomePage.css";
+import { useUser } from "@clerk/clerk-react";
+import useGetMyBooksList from "../hooks/useGetMyBooksList";
+
 
 function HomePage() {
+  const { user } = useUser();
+  const name = user?.firstName + " " + user?.lastName;
+  const { listBooks } = useGetMyBooksList({ userId: user?.id });
+
   return (
     <div className="fluid-container">
       <div id="background"></div>
@@ -12,7 +15,7 @@ function HomePage() {
         <div id="title">
           <span>Happy Reading,</span>
           <br />
-          <span>Amin Haiqal</span>
+          <span>{name}</span>
         </div>
         <div id="description">
           Don't let your love for books fade away! Rediscover the enhancement by
@@ -28,77 +31,63 @@ function HomePage() {
       <div id="section1">
         <div id="title">My Books</div>
         <div id="book-list">
-          <div id="card">
-            <div
-              id="cover"
-              style={{ backgroundImage: `url(${richDadPoorDad})` }}
-            ></div>
-            <div id="name">Rich Dad Poor Dad</div>
-          </div>
-          <div id="card">
-            <div
-              id="cover"
-              style={{ backgroundImage: `url(${surrondedBySetbacks})` }}
-            ></div>
-            <div id="name">Surronded By Setbacks: Or, How...</div>
-          </div>
-          <div id="card">
-            <div
-              id="cover"
-              style={{ backgroundImage: `url(${theLeanStartup})` }}
-            ></div>
-            <div id="name">The Lean Startup</div>
-          </div>
-          <div id="card">
-            <div
-              id="cover"
-              style={{ backgroundImage: `url(${biografiMuhammad})` }}
-            ></div>
-            <div id="name">Biografi Muhammad bin Abdullah</div>
-          </div>
+          {listBooks?.length > 0 ? (
+            listBooks.map((book) => (
+              <div
+                key={book.id}
+                id="cover"
+                style={{ backgroundImage: `url(${book.imageLink})` }}
+              >
+                <div id="name">{book.title}</div>
+              </div>
+            ))
+          ) : (
+            <div>No books added yet!</div>)}
         </div>
-      </div>
-      <div id="section2">
-        <div id="current-read">
-          <div
-            id="cover"
-            style={{ backgroundImage: `url(${surrondedBySetbacks})` }}
-          ></div>
-          <div id="description">
-            <div id="title">
-              Surrounded by Setbacks: Or, How to Succeed When Everything's Gone
-              Bad
-            </div>
-            <div id="progress">
-              <span>236</span>
-              <span> /</span>
-              <span>317</span> Pages
-            </div>
-            <div id="quotes">
-              Success is not final, failure is not fatal, It is the courage to
-              continue that counts.
-            </div>
+
+
+        <div id="section2">
+          <div id="current-read">
+            {listBooks?.length > 0 ? (listBooks.map((book) => (
+              <div key={listBooks[0].id}>
+                <div>
+                  <div id="cover" style={{ backgroundImage: `url(${listBooks[0].imageLink})` }}></div>
+                  <div id="description">
+                    <div id="title">{listBooks[0].title}</div>
+                    <div id="progress">
+                      <span>{listBooks[0].pageCount}</span>
+                      <span> /</span>
+                      <span>{listBooks[0].totalPageCount} pages</span>
+                    </div>
+                    <div id="quotes">
+                      <p>{listBooks[0].quote}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div id="current-read-details">
+                  <div id="book-details">
+                    <p>Status</p>
+                    <p>Author</p>
+                    <p>Genre</p>
+                    <p>Publisher</p>
+                    <p>Dates</p>
+                    <p>ISBN</p>
+                  </div>
+                  <div id="values">
+                    <p>{listBooks[0].status}</p>
+                    <p>{listBooks[0].author}</p>
+                    <p>{listBooks[0].genre}</p>
+                    <p>{listBooks[0].publisher}</p>
+                    <p>{listBooks[0].publishedDate}</p>
+                    <p>{listBooks[0].isbn}</p>
+                  </div>
+                </div>
+              </div>           
+            ))) : (<div>No books added yet!</div>)}
           </div>
+          <div />
         </div>
-        <div id="current-read-details">
-          <div id="book-details">
-            <p>Status</p>
-            <p>Author</p>
-            <p>Genre</p>
-            <p>Publisher</p>
-            <p>Dates</p>
-            <p>ISBN</p>
-          </div>
-          <div id="values">
-            <p>Reading</p>
-            <p id="author">Thomas Erikson</p>
-            <p id="genre">Self-Help</p>
-            <p id="publisher">Penguin Random House UK</p>
-            <p id="dates">2021</p>
-            <p id="ISBN">9781785043666</p>
-          </div>
-        </div>
-        <div />
       </div>
     </div>
   );

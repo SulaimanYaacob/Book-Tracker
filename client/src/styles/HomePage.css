@@ -9,72 +9,6 @@
   position: fixed;
   z-index: -1;
 }
-
-/* #sidebar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-right: 1.2px solid #000000;
-  height: 100vh;
-  position: fixed;
-  width: 6rem;
-}
-#sidebar > div > #Link > span {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 4.3rem;
-  width: 4.3rem;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  color: #000000;
-}
-#sidebar > div > #Link > span:hover {
-  border-radius: 50%;
-  background-color: #d15359;
-  color: #ffffff;
-}
-#Home.active,
-#Search.active {
-  border-radius: 50%;
-  background-color: #d15359;
-  #Link > span {
-    color: #ffffff;
-  }
-}
-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 4rem;
-  width: 100%;
-  padding-left: 8rem;
-}
-header > #date,
-#account {
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-  color: #545454;
-}
-header > #account {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  padding-right: 2rem;
-}
-header > #account > #profile-pic {
-  width: 40px;
-  height: 40px;
-  background-size: cover;
-  background-color: #000000;
-  border-radius: 50%;
-  margin-right: 8px;
-} */
 #hero {
   padding-left: 8rem;
 }
@@ -114,9 +48,11 @@ header > #account > #profile-pic {
   font-family: "Playfair Display", serif;
   font-size: 24px;
   padding-left: 8rem;
+  width: 15rem;
 }
 #section1 > #book-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -125,7 +61,7 @@ header > #account > #profile-pic {
   padding-bottom: 16px;
   width: 46rem;
 }
-#section1 > #book-list > #card {
+#section1 {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -133,17 +69,19 @@ header > #account > #profile-pic {
   height: 300px;
   border-radius: 8px;
 }
-#section1 > #book-list > #card > #cover {
+#section1 > #book-list > #cover {
   width: 140px;
   height: 212px;
   background-size: cover;
+  box-shadow: -12px 14px 14px 0px rgba(0, 0, 0, 0.25);
+  background: lightgray 50% / cover no-repeat;
 }
-#section1 > #book-list > #card > #name {
+#section1 > #book-list > #cover > #name {
   font-family: "Inter", sans-serif;
   font-size: 14px;
-  padding-top: 16px;
+  padding-top: 14.2rem;
 }
-#section2 {
+#section2 > #current-read > div{
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -151,7 +89,7 @@ header > #account > #profile-pic {
   top: 10%;
   left: 48%;
 }
-#section2 > #current-read {
+#section2 > #current-read > div > div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -159,42 +97,42 @@ header > #account > #profile-pic {
   width: 40.7rem;
   height: 320px;
 }
-#section2 > #current-read > #cover {
+#section2 > #current-read > div > div > #cover {
   width: 255px;
   height: 400px;
   scale: 0.7;
   background-size: cover;
   box-shadow: -16px 18px 40px 0px rgba(0, 0, 0, 0.25);
 }
-#section2 > #current-read > #description {
+#section2 > #current-read > div > div > #description {
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: start;
 }
-#section2 > #current-read > #description > #title {
+#section2 > #current-read > div > div > #description > #title {
   font-family: "Playfair Display", serif;
   font-size: 24px;
   width: 20rem;
   padding-bottom: 32px;
 }
-#section2 > #current-read > #description > #progress {
+#section2 > #current-read > div > div > #description > #progress {
   font-family: "Inter", sans-serif;
   font-size: 18px;
   width: 20rem;
   color: #545454;
 }
-#section2 > #current-read > #description > #progress span:nth-child(1) {
+#section2 > #current-read > div > div > #description > #progress span:nth-child(1) {
   color: #d15359;
 }
 
-#section2 > #current-read > #description > #quotes {
+#section2 > #current-read > div > div > #description > #quotes {
   font-family: "Inter", sans-serif;
   padding-top: 24px;
   font-size: 14px;
   width: 20rem;
 }
-#section2 > #current-read-details {
+#section2 > #current-read > div > #current-read-details {
   display: flex;
   flex-direction: row;
   align-items: start;
@@ -203,7 +141,7 @@ header > #account > #profile-pic {
   padding-left: 12rem;
   padding-top: 12px;
 }
-#section2 > #current-read-details > #book-details,
+#section2 > #current-read > div > #current-read-details > #book-details,
 #values {
   display: flex;
   flex-direction: column;
@@ -211,12 +149,13 @@ header > #account > #profile-pic {
   justify-content: start;
   padding-right: 24px;
 }
-#section2 > #current-read-details > #book-details > p {
+#section2 > #current-read > div > #current-read-details > #book-details > p {
   font-family: "Inter", sans-serif;
   font-size: 14px;
   color: #545454;
 }
-#section2 > #current-read-details > #values {
+#section2 > #current-read > div > #current-read-details > #values {
+  padding-top: 20px;
   font-family: "Inter", sans-serif;
   font-size: 14px;
   color: #000000;
