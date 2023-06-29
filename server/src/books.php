@@ -71,7 +71,6 @@ $app->post('/api/books/add', function(Request $request, Response $response) use 
         // Get book information from Google Books API
         $apiUrl = "https://www.googleapis.com/books/v1/volumes/{$bookId}";
         $apiresponse = file_get_contents($apiUrl);
-        echo $apiresponse;
 
         if ($apiresponse == true) {
             $responseData = json_decode($apiresponse, true);
