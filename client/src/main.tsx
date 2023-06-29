@@ -11,11 +11,8 @@ import BookSearch from "./pages/BookSearch.tsx";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import BookDetails from "./pages/BookDetails.tsx";
 import HomePage from "./pages/HomePage.tsx";
-import Clerk from "./pages/Clerk.tsx";
 import AppLayout from "./components/AppLayout.tsx";
 import "./styles/index.css";
-
-//TODO Add other pages. add path & element props
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -26,7 +23,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <Routes>
               <Route index element={<HomePage />} />
               <Route path="/search" element={<BookSearch />} />
-              <Route path="/clerk" element={<Clerk />} />
               <Route path="/" />
               <Route path="/book/:id" element={<BookDetails />} />
               <Route
