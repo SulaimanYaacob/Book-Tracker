@@ -2,11 +2,10 @@ import "../styles/HomePage.css";
 import { useUser } from "@clerk/clerk-react";
 import useGetMyBooksList from "../hooks/useGetMyBooksList";
 
-
 function HomePage() {
   const { user } = useUser();
-  const name = user?.firstName + " " + user?.lastName;
   const { listBooks } = useGetMyBooksList({ userId: user?.id });
+  const name = (user?.firstName ?? "") + " " + (user?.lastName ?? "");
 
   return (
     <div className="fluid-container">
@@ -42,49 +41,58 @@ function HomePage() {
               </div>
             ))
           ) : (
-            <div>No books added yet!</div>)}
+            <div>No books added yet!</div>
+          )}
         </div>
-
 
         <div id="section2">
           <div id="current-read">
-            {listBooks?.length > 0 ? (listBooks.map((book) => (
-              <div key={listBooks[0].id}>
-                <div>
-                  <div id="cover" style={{ backgroundImage: `url(${listBooks[0].imageLink})` }}></div>
-                  <div id="description">
-                    <div id="title">{listBooks[0].title}</div>
-                    <div id="progress">
-                      <span>{listBooks[0].pageCount}</span>
-                      <span> /</span>
-                      <span>{listBooks[0].totalPageCount} pages</span>
+            {listBooks?.length > 0 ? (
+              listBooks.map((book) => (
+                <div key={listBooks[0].id}>
+                  <div>
+                    <div
+                      id="cover"
+                      style={{
+                        backgroundImage: `url(${listBooks[0].imageLink})`,
+                      }}
+                    ></div>
+                    <div id="description">
+                      <div id="title">{listBooks[0].title}</div>
+                      <div id="progress">
+                        <span>{listBooks[0].pageCount}</span>
+                        <span> /</span>
+                        <span>{listBooks[0].totalPageCount} pages</span>
+                      </div>
+                      <div id="quotes">
+                        <p>{listBooks[0].quote}</p>
+                      </div>
                     </div>
-                    <div id="quotes">
-                      <p>{listBooks[0].quote}</p>
+                  </div>
+
+                  <div id="current-read-details">
+                    <div id="book-details">
+                      <p>Status</p>
+                      <p>Author</p>
+                      <p>Genre</p>
+                      <p>Publisher</p>
+                      <p>Dates</p>
+                      <p>ISBN</p>
+                    </div>
+                    <div id="values">
+                      <p>{listBooks[0].status}</p>
+                      <p>{listBooks[0].author}</p>
+                      <p>{listBooks[0].genre}</p>
+                      <p>{listBooks[0].publisher}</p>
+                      <p>{listBooks[0].publishedDate}</p>
+                      <p>{listBooks[0].isbn}</p>
                     </div>
                   </div>
                 </div>
-                
-                <div id="current-read-details">
-                  <div id="book-details">
-                    <p>Status</p>
-                    <p>Author</p>
-                    <p>Genre</p>
-                    <p>Publisher</p>
-                    <p>Dates</p>
-                    <p>ISBN</p>
-                  </div>
-                  <div id="values">
-                    <p>{listBooks[0].status}</p>
-                    <p>{listBooks[0].author}</p>
-                    <p>{listBooks[0].genre}</p>
-                    <p>{listBooks[0].publisher}</p>
-                    <p>{listBooks[0].publishedDate}</p>
-                    <p>{listBooks[0].isbn}</p>
-                  </div>
-                </div>
-              </div>           
-            ))) : (<div>No books added yet!</div>)}
+              ))
+            ) : (
+              <div>No books added yet!</div>
+            )}
           </div>
           <div />
         </div>

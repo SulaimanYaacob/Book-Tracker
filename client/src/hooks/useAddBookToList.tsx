@@ -7,8 +7,8 @@ type Props = {
 };
 
 const useAddBookToList = ({ bookId, userId }: Props) => {
-  const url =
-    `http://localhost:3000/server/src/books.php/api/books/add?bookId=${bookId}&userId=${userId}`;
+  //http://localhost:3000/server/src/books.php/api/books/add?bookId=${bookId}&userId=${userId} - if use extension
+  const url = `http://localhost/book-tracker/server/src/books.php/api/books/add?bookId=${bookId}&userId=${userId}`;
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
   const [isAddedToList, setIsAddedToList] = useState<boolean>(false);

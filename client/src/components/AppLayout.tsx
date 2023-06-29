@@ -1,12 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import "../styles/AppLayout.css";
-import { useUser } from "@clerk/clerk-react";
+import { UserButton, useUser } from "@clerk/clerk-react";
 import React from "react";
 
 const AppLayout = ({ children }: { children: React.ReactNode }) => {
-  const { user } = useUser();
   const location = useLocation();
-  const name = user?.firstName + " " + user?.lastName;
   const currentDate = new Date();
 
   const isActiveHome = location.pathname === "/";
@@ -20,11 +18,7 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
       <header>
         <div id="date">{currentDate.toDateString()}</div>
         <div id="account">
-          <div
-            id="profile-pic"
-            style={{ backgroundImage: `url(${user?.profileImageUrl})` }}
-          ></div>
-          <div id="profile-name">{name}</div>
+          <UserButton showName />
         </div>
       </header>
       <div id="sidebar">
